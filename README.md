@@ -1,4 +1,4 @@
-![image](https://github.com/Ahsan-Ali20/200901025_Machine_Learning/assets/93043420/fe317c29-7b1d-4068-a7cc-55720615661d)# 200901025_Machine_Learning
+# 200901025_Machine_Learning
 # Abstract
 In the ever-evolving landscape of technology, choosing the right laptop is a critical decision shaped by budget constraints and specific usage requirements. The "Laptop Price Predictor" project employs machine learning to predict laptop prices based on diverse features such as brand, type, RAM, weight, touchscreen availability, and more. Leveraging a dataset, the project utilizes various regression algorithms, including Linear Regression, Ridge Regression, K-Nearest Neighbors, Decision Tree, Support Vector Machine, Random Forest, Extra Tree, AdaBoost, Gradient Boost, XGBoost, and a Voting Regressor. Through meticulous data analysis, preprocessing, and model evaluation, the Random Forest model emerges as a top performer with a high R2 score of 0.911. The project also includes the development of a user-friendly Streamlit web application for easy input and price predictions, enhancing user experience and accessibility.
 # Introduction
@@ -13,89 +13,89 @@ As we embark on this journey, we'll unravel the intricacies of Python's prowess 
 5.	Train the model using a comprehensive dataset of laptops to ensure accurate predictions.
 # Methodology
 The methodology of the "Laptop Price Predictor" project encompasses several crucial steps, ensuring a systematic and comprehensive approach to data analysis, model development, and deployment. The detailed methodology is as follows:
-# I. Data Analysis and Preprocessing
-# 1.	Loading and Exploring the Dataset:
+## I. Data Analysis and Preprocessing
+### 1.	Loading and Exploring the Dataset:
 •	Loaded the laptop dataset using pd.read_csv() in Google Colab to create a Pandas DataFrame for efficient manipulation.
 •	Inspected the first few rows using data.head() to understand the dataset's structure and content, examining key features such as brand, type, RAM, weight, touchscreen availability, display features, and the target variable, price.
-# 2.	Data Cleaning:
+### 2.	Data Cleaning:
 •	Checked for missing values using data.isnull().sum() and addressed them appropriately. In Google Colab, this involved strategies such as imputation or removal based on the extent of missing data.
 •	Detected and handled duplicate rows using data.duplicated().sum() in Colab to ensure data integrity by removing any redundant entries.
-# 3.	Feature Engineering:
+### 3.	Feature Engineering:
 •	Created a new feature 'os' by applying a function to categorize the 'OpSys' column. This categorization simplified the representation of operating systems, potentially reducing the complexity of the dataset. The function can be implemented using Pandas apply () function in Colab.
-# 4.	Exploratory Data Analysis (EDA):
+### 4.	Exploratory Data Analysis (EDA):
 •	Visualized the dataset using various plots in Colab to gain insights into feature distributions and patterns. Utilized tools such as matplotlib and seaborn for creating visualizations.
 •	Employed a scatter plot in Colab to explore the relationship between 'Weight' and 'Price,' providing a visual representation of how these variables interact.
 •	Created a correlation matrix heatmap using sns.heatmap() in Colab to examine the correlation between numerical features, identifying potential multicollinearity.
-# 5.	Data Transformation:
+### 5.	Data Transformation:
 •	Transformed the 'Price' column by taking the logarithm (np.log(data['Price'])) in Colab. This log transformation helps linearize the target variable, addressing potential issues related to skewed or non-normally distributed target variables.
-# II. Machine Learning Pipeline
-# 1.	Data Splitting:
+## II. Machine Learning Pipeline
+### 1.	Data Splitting:
 •	Split the dataset into training and testing sets using train_test_split in Colab to evaluate model generalization. This involved specifying the test size and setting a random seed for reproducibility.
-# 2.	Model Selection and Evaluation:
-# Linear Regression:
+### 2.	Model Selection and Evaluation:
+#### Linear Regression:
 •	Applied Linear Regression for predicting 'log(Price)' using a pipeline with feature encoding. Constructed the pipeline using ColumnTransformer to handle different types of features. Used the LinearRegression model for regression tasks.
 •	Evaluated the model's performance using metrics such as R2 score and Mean Absolute Error (MAE). The r2_score and mean_absolute_error functions from the sklearn.metrics module in Colab were used for this purpose.
-# Ridge Regression:
+#### Ridge Regression:
 •	Employed Ridge Regression with hyperparameter tuning (alpha=10) within the same pipeline structure. This involved using the Ridge model from sklearn.linear_model with specified hyperparameters.
 •	Evaluated the model's performance.
-# K-Nearest Neighbors (KNN):
+#### K-Nearest Neighbors (KNN):
 •	Used K-Nearest Neighbors with k=3 within a pipeline. Constructed the pipeline with feature encoding using ColumnTransformer and applied the KNeighborsRegressor model from sklearn.neighbors.
 •	Assessed the model's performance.
-# Decision Tree:
+#### Decision Tree:
 •	Utilized a Decision Tree with a maximum depth of 8 within the pipeline structure. This involved using the DecisionTreeRegressor model from sklearn.tree.
 •	Evaluated the model's performance.
-# Support Vector Machine (SVM):
+#### Support Vector Machine (SVM):
 •	Implemented Support Vector Machine with an RBF kernel, C=10000, and epsilon=0.1 within the pipeline. This involved using the SVR model from sklearn.svm.
 •	Assessed the model's performance.
-# Random Forest:
+#### Random Forest:
 •	Employed Random Forest with specific hyperparameters (n_estimators=100, max_samples=0.5, max_features=0.75, max_depth=15) within the pipeline. Utilized the RandomForestRegressor model from sklearn.ensemble.
 •	Evaluated the model's performance.
-# Extra Tree:
+#### Extra Tree:
 •	Used Extra Trees Regressor with specific hyperparameters within the pipeline. Employed the ExtraTreesRegressor model from sklearn.ensemble.
 •	Assessed the model's performance.
-# AdaBoost:
+#### AdaBoost:
 •	Applied AdaBoost Regressor with specific hyperparameters within the pipeline. Utilized the AdaBoostRegressor model from sklearn.ensemble.
 •	Evaluated the model's performance.
-# Gradient Boost:
+#### Gradient Boost:
 •	Implemented Gradient Boosting Regressor with a specified number of estimators within the pipeline. Used the GradientBoostingRegressor model from sklearn.ensemble.
 •	Evaluated the model's performance.
-# XGBoost:
+#### XGBoost:
 •	Employed XGBoost Regressor with specific hyperparameters within the pipeline. Utilized the XGBRegressor from the xgboost library.
 •	Evaluated the model's performance.
-# Voting Regressor:
+#### Voting Regressor:
 •	Utilized a Voting Regressor with specified base models (Random Forest, Gradient Boosting, XGBoost, Extra Trees) and weights. Applied the VotingRegressor from sklearn.ensemble.
 •	Evaluated the model's performance.
-# III. Model Comparison
+## III. Model Comparison
 Performed a detailed comparison between the Voting Regressor and Random Forest models based on R2 scores and Mean Absolute Errors.
-# Random Forest
+### Random Forest
 •	Utilized the Random Forest Regressor with specific hyperparameters.
 •	Evaluated the model's performance using R2 score and Mean Absolute Error.
 •	Achieved an R2 score of 0.9106 and a Mean Absolute Error of 0.1489.
-# Voting Regressor
+### Voting Regressor
 •	Employed a Voting Regressor combining base models (Random Forest, Gradient Boosting, XGBoost, Extra Trees) with specified weights.
 •	Followed the same pipeline structure and assessed the model's performance.
 •	Achieved an R2 score of 0.9105 and a Mean Absolute Error of 0.1494.
-# Comparison Results
+### Comparison Results
 •	Both Random Forest and Voting Regressor demonstrated high performance, yielding identical R2 scores and similar Mean Absolute Errors.
 •	The consistency in performance indicates that the ensemble approach with a Voting Regressor, combining various models, did not significantly outperform the Random Forest model.
-# IV. Model Export
+## IV. Model Export
 •	Exported the Random Forest model and the dataset using pickle for later use. This involved saving the trained model and the preprocessed dataset to files.
-# V. Streamlit Web Application
+## V. Streamlit Web Application
 •	Created a Streamlit web application in Colab to provide an interactive interface for users to input laptop specifications and receive price predictions. Utilized Streamlit's simple syntax and integration capabilities.
 •	The application processes user inputs, transforms them using the pre-trained model, and sends them to the model for prediction. The predicted prices are then displayed to the user through the Streamlit interface.
 Here's a brief overview of my Streamlit app:
-# 1.	Page Configuration and Styling:
+### 1.	Page Configuration and Styling:
 •	Page title and icon are set using st.set_page_config.
 •	CSS styles are applied for title, sidebar, buttons, and panels.
-# 2.	User Inputs:
+### 2.	User Inputs:
 •	The sidebar contains input widgets (select boxes and number inputs) for various laptop features such as brand, type, RAM, weight, etc.
-# 3.	Prediction Button:
+### 3.	Prediction Button:
 •	A button is provided to trigger the prediction based on the user inputs.
-# 4.	Price Prediction:
+### 4.	Price Prediction:
 •	Upon clicking the prediction button, the app processes the user inputs, transforms them into a format suitable for the model, and then uses the pre-trained model to make a price prediction.
-# 5.	Display Images:
+### 5.	Display Images:
 •	Featured laptop images are displayed below the prediction results.
-# 6.	Footer:
+### 6.	Footer:
 •	Information about the designer  is displayed at the bottom of the app.
 This comprehensive methodology ensures a thorough exploration of the dataset, robust model training and evaluation, effective model comparison, and the preparation of a user-friendly web application for real-world usability. The iterative nature of this process allows for continuous refinement and improvement of the predictive models.
 # Project Benefits
